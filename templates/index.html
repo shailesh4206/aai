@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Trading Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-chart-line"></i>
+                    Delta Trading Dashboard
+                </h1>
+                <div class="status-indicator" id="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Stopped</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="grid">
+                <div class="card controls-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-cogs"></i>
+                        Trading Controls
+                    </h2>
+                    <div class="controls">
+                        <div class="control-group">
+                            <label for="symbols">Symbols</label>
+                            <select id="symbols" multiple class="select-multi">
+                                <option value="ETHUSD" selected>ETHUSD</option>
+                                <option value="BTCUSD">BTCUSD</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="interval">Interval</label>
+                            <select id="interval" class="select">
+                                <option value="1m">1 Minute</option>
+                                <option value="5m" selected>5 Minutes</option>
+                                <option value="15m">15 Minutes</option>
+                                <option value="1h">1 Hour</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="balance">Account Balance (₹)</label>
+                            <input type="number" id="balance" value="300" step="0.01" class="input">
+                        </div>
+                        <div class="control-buttons">
+                            <button id="start-btn" class="btn btn-primary">
+                                <i class="fas fa-play"></i>
+                                Start Trading
+                            </button>
+                            <button id="stop-btn" class="btn btn-danger" disabled>
+                                <i class="fas fa-stop"></i>
+                                Stop Trading
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stats-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Performance Stats
+                    </h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-pnl">₹0.00</div>
+                            <div class="stat-label">Total P&L</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-trades">0</div>
+                            <div class="stat-label">Total Trades</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="win-rate">0%</div>
+                            <div class="stat-label">Win Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="active-balance">₹300.00</div>
+                            <div class="stat-label">Active Balance</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card trades-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-history"></i>
+                        Recent Trades
+                    </h2>
+                    <div class="table-container">
+                        <table class="trades-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Symbol</th>
+                                    <th>Side</th>
+                                    <th>Entry</th>
+                                    <th>Exit</th>
+                                    <th>Qty</th>
+                                    <th>P&L</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trades-body">
+                                <tr>
+                                    <td colspan="7" class="no-data">No trades yet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
